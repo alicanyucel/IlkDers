@@ -74,7 +74,7 @@ namespace IlkDers.DataAccessLayer
             //}
             ConnectionKontrol();
                                               // person tablosnun id değer parametre olarak @id değerine eşitse sil 
-            SqlCommand command = new SqlCommand("Delete from Person where id=@id",connection);
+            SqlCommand command = new SqlCommand("Delete from Personel where Id=@id",connection);
             command.Parameters.AddWithValue("@id",Id); //@id=id
             command.ExecuteNonQuery();//komutu calısıtrdım. sildim işlem bitti
             connection.Close(); //bağlantı işlem bitince yok edildi.
@@ -89,13 +89,12 @@ namespace IlkDers.DataAccessLayer
             //string guncelleSorgu = "Update Person Set ad=@ad,soyad=@soyad,brans=@brans where id=@id";
             //SqlCommand cmd=new SqlCommand(guncelleSorgu,connection);
             // 2. yol şu şekilde ///                                                  bransı güncellemedi
-            SqlCommand cmd = new SqlCommand("Update Personel Set ad=@ad,soyad=@soyad,brans=@brans where Id=@id",connection);
+            SqlCommand cmd = new SqlCommand("Update Personel Set Ad=@ad,Soyad=@soyad,brans=@brans where Id=@id",connection);
             // dısardan geelcek olan @ad ,@soyad @id değerlerini personel.ad pesonel soyad p.ID ile set ediyorum
             cmd.Parameters.AddWithValue("@id", personel.Id);
             cmd.Parameters.AddWithValue("@ad",personel.Ad);
             cmd.Parameters.AddWithValue("@soyad", personel.Soyad);
             cmd.Parameters.AddWithValue("@brans",personel.Brans);
-         
             cmd.ExecuteNonQuery();// sorguyu calıstırdık güncelleme işlmi bitti
             connection.Close(); // yok ediyoruz
 

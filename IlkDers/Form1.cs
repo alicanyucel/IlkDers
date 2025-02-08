@@ -76,8 +76,7 @@ namespace IlkDers
 
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
-           PersonelDal personelDalss = new PersonelDal();
-            txtBrans.Text = "";
+        
             Personel personel = new Personel
             {
                 // id=0 indeks ad=1. indeks soyad 2. indeks brans da 3.indeks e denk geliyor
@@ -86,9 +85,9 @@ namespace IlkDers
                 Soyad = txtSoyad.Text,
                 Brans = txtBrans.Text,
             }; // burada tetboxlardan gelen deðerlerle sýnýfý doldurdum
-            personelDalss.Update(personel);
+            personelDal.Update(personel);
             MessageBox.Show("Güncellendi");
-            dataGridView1.DataSource = personelDalss.GetAll();
+            dataGridView1.DataSource = personelDal.GetAll();
         }
     }
 }
