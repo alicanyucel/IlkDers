@@ -86,13 +86,14 @@ namespace IlkDers.DataAccessLayer
             //// 1.yol
             //string guncelleSorgu = "Update Person Set ad=@ad,soyad=@soyad,brans=@brans where id=@id";
             //SqlCommand cmd=new SqlCommand(guncelleSorgu,connection);
-            // 2. yol şu şekilde
-            SqlCommand cmd = new SqlCommand("Update Person Set ad=@ad,soyad=@soyad,brans=@brans where id=@id",connection);
+            // 2. yol şu şekilde ///                                                  bransı güncellemedi
+            SqlCommand cmd = new SqlCommand("Update Personel Set ad=@ad,soyad=@soyad,brans=@brans where Id=@id",connection);
             // dısardan geelcek olan @ad ,@soyad @id değerlerini personel.ad pesonel soyad p.ID ile set ediyorum
+            cmd.Parameters.AddWithValue("@id", personel.Id);
             cmd.Parameters.AddWithValue("@ad",personel.Ad);
             cmd.Parameters.AddWithValue("@soyad", personel.Soyad);
             cmd.Parameters.AddWithValue("@brans",personel.Brans);
-            cmd.Parameters.AddWithValue("@id",personel.Id);
+         
             cmd.ExecuteNonQuery();// sorguyu calıstırdık güncelleme işlmi bitti
             connection.Close(); // yok ediyoruz
 

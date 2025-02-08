@@ -45,7 +45,7 @@ namespace IlkDers
             // burdan datagriddeki id yi yaklayýp id deðiþkene atadým
             int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
             personelDal.Delete(id);// silme iþlemi yapýldý
-            dataGridView1.DataSource=personelDal.GetAll(); // sildim verileri listeledim
+            dataGridView1.DataSource = personelDal.GetAll(); // sildim verileri listeledim
             MessageBox.Show("kayýt silindi");
 
         }
@@ -54,6 +54,41 @@ namespace IlkDers
         {
             // form yülendiði zaman verileri datagirdviewde göster
             dataGridView1.DataSource = personelDal.GetAll();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtAd.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            txtSoyad.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            txtBrans.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+        }
+
+        private void btnEkle_Click(object sender, EventArgs e)
+        {
+            personelDal.Ekle(new Personel
+            {
+                Ad = txtAd.Text,
+                Soyad = txtSoyad.Text,
+                Brans = txtBrans.Text,
+            });
+            dataGridView1.DataSource = personelDal.GetAll();
+        }
+
+        private void btnGuncelle_Click(object sender, EventArgs e)
+        {
+           PersonelDal personelDalss = new PersonelDal();
+            txtBrans.Text = "";
+            Personel personel = new Personel
+            {
+                // id=0 indeks ad=1. indeks soyad 2. indeks brans da 3.indeks e denk geliyor
+                Id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString()),
+                Ad = txtAd.Text,
+                Soyad = txtSoyad.Text,
+                Brans = txtBrans.Text,
+            }; // burada tetboxlardan gelen deðerlerle sýnýfý doldurdum
+            personelDalss.Update(personel);
+            MessageBox.Show("Güncellendi");
+            dataGridView1.DataSource = personelDalss.GetAll();
         }
     }
 }
