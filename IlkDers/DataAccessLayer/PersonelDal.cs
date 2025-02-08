@@ -82,6 +82,7 @@ namespace IlkDers.DataAccessLayer
         // güncelleme işlemi
         public void Update(Personel personel)
         {
+            // bransı güncellemiyor
             ConnectionKontrol(); //bağlantıyı açan test eden metod
             //// 1.yol
             //string guncelleSorgu = "Update Person Set ad=@ad,soyad=@soyad,brans=@brans where id=@id";
