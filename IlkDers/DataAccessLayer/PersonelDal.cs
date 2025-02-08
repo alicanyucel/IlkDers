@@ -11,7 +11,7 @@ namespace IlkDers.DataAccessLayer
     {
         //serverin localdeki adresi                       //sunucu adresi.................... //database............. //wimdoew authanticationn 
                                                                                                                      //şifre ve paralo girmeden
-        SqlConnection connection = new SqlConnection("Data Source=DESKTOP-L6NJT48\\SQLEXPRESS;Initial Catalog=IlkDers;ıntegrated Security=True");
+        SqlConnection connection = new SqlConnection("Data Source=DESKTOP-L6NJT48\\SQLEXPRESS;Initial Catalog=IlkDers;Integrated Security=True");
                //geriye değer dondurmezse void olur
         public   void ConnectionKontrol()
         {
@@ -27,10 +27,7 @@ namespace IlkDers.DataAccessLayer
             // BEST PARACTİTSE OLARAK
             // ConnectionKontrol()
             // VEYA
-            if (connection.State == ConnectionState.Closed)
-            {
-                connection.Open();
-            }
+            ConnectionKontrol(); // BAĞLANTI KAPALIYSA BAĞLANTIYI AÇAN FONKSİYON
             // SqlCommand tipinden command adı altında bir nesne oluşturdum ve ornekledim
             // SqlCommand 2 tane parametre alır 1.sorgu 2. si bağlantı
             SqlCommand command = new SqlCommand("Select * from Personel",connection);
