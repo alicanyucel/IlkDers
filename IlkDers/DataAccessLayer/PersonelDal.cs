@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 namespace IlkDers.DataAccessLayer
 {
     // burada crud operasyonlarını yapacağımız yer
+    //brans bizi yaktı.
     public class PersonelDal
     {
         //serverin localdeki adresi                       //sunucu adresi.................... //database............. //wimdoew authanticationn 
